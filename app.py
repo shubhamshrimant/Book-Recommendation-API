@@ -6,7 +6,7 @@ Created on Fri Jun 25 11:19:24 2021
 """
 
 from flask import Flask,render_template,request
-import book_rec_by_author
+import book_rec_by_genre
 import os
 from flask_restful import Api,Resource
 app = Flask(__name__)
@@ -20,7 +20,7 @@ class CB(Resource):
     def post(self,inp):
         res=[]
         #inp=request.form.get("input_user")
-        res=book_rec_by_author.chatbot(inp)
+        res=book_rec_by_genre.chatbot(inp)
         return {"data":res}
 
 api.add_resource(CB, "/<string:inp>")
